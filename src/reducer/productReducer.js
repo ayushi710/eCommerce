@@ -15,7 +15,6 @@ const ProductReducer = (state , action) => {
                 isError: true
             }
         case 'SET_PRODUCTS':
-            debugger
             const _products = action.payload || DATA
             const featureProducts = _products.filter((ele)=> ele.featured === true)
             console.log("sdede",featureProducts)

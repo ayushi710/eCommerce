@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext";
+import { FormatPrice } from "../../utils/FormatPrice";
+import PageNavigation from "../PageNavigation";
+
 
 
 const API = "https://api.pujakaitem.com/api/products";
@@ -12,6 +15,7 @@ const SingleProduct = () => {
   const { id } = useParams();
 
   const {
+    id: alias,
     name,
     company,
     price,
@@ -20,13 +24,78 @@ const SingleProduct = () => {
     stock,
     stars,
     reviews,
+    image,
   } = singleProduct;
 
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
   }, []);
 
-  return <h1>single page {name} </h1>;
+  return  <Wrapper>
+  <PageNavigation title={name} />
+  <div className="container">
+    <div className="grid grid-two-column">
+      {/* product Images  */}
+      <div className="product_images">
+        {/* <MyImage imgs={image} /> */}
+        {/* <img src={image}/> */}
+      </div>
+
+      {/* product dAta  */}
+      <div className="product-data">
+        <h2>{name}</h2>
+        {/* <Star stars={stars} reviews={reviews} /> */}
+
+        <p className="product-data-price">
+          MRP:
+          <del>
+            <FormatPrice price={price + 250000} />
+          </del>
+        </p>
+        <p className="product-data-price product-data-real-price">
+          Deal of the Day: <FormatPrice price={price} />
+        </p>
+        <p>{description}</p>
+        <div className="product-data-warranty">
+          <div className="product-warranty-data">
+            {/* <TbTruckDelivery className="warranty-icon" /> */}
+            <p>Free Delivery</p>
+          </div>
+
+          <div className="product-warranty-data">
+            {/* <TbReplace className="warranty-icon" /> */}
+            <p>30 Days Replacement</p>
+          </div>
+
+          <div className="product-warranty-data">
+            {/* <TbTruckDelivery className="warranty-icon" /> */}
+            <p> Delivered </p>
+          </div>
+
+          <div className="product-warranty-data">
+            {/* <MdSecurity className="warranty-icon" /> */}
+            <p>2 Year Warranty </p>
+          </div>
+        </div>
+
+        <div className="product-data-info">
+          <p>
+            Available:
+            <span> {stock > 0 ? "In Stock" : "Not Available"}</span>
+          </p>
+          <p>
+            ID : <span> {id} </span>
+          </p>
+          <p>
+            Brand :<span> {company} </span>
+          </p>
+        </div>
+        <hr />
+        {/* {stock > 0 && <AddToCart product={singleProduct} />} */}
+      </div>
+    </div>
+  </div>
+</Wrapper>
 };
 
 const Wrapper = styled.section`
