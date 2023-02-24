@@ -1,9 +1,15 @@
 import React from 'react'
+import { useProductContext } from '../context/ProductContext'
 import MainSection from './MainSection'
 
 const About = () => {
+  const { myName } = useProductContext();
   return (
-    <MainSection title="About"/>
+    <>
+    {myName}
+    <MainSection title="About "/>
+    </>
+    
   )
 }
 
