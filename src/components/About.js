@@ -6,8 +6,7 @@ const About = () => {
   const { myName } = useProductContext();
   return (
     <>
-    {myName}
-    <MainSection title="About "/>
+    <MainSection title="About " desc="Here explain about this site and uses"/>
     </>
     
   )

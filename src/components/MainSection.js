@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const MainSection = (props) => {
-    const {title} = props
+    const {title, desc} = props
   return (
     <Wrapper>
         <div  className='container'>
@@ -10,8 +10,10 @@ const MainSection = (props) => {
                     <div className='info-data'>
                         <p>Welcome to</p>
                         <h2>Ayushi Store {title} Page</h2>
+                        <p className='description'>
+                        {desc}
+                        </p>
                     </div>
-                
                 </div>
                 <div className="hero-section-image">
                     <figure>
@@ -70,20 +72,7 @@ const Wrapper = styled.section`
     width: 100%;
     height: auto;
   }
-  @media (max-width: ${({ theme }) => theme.media.mobile}) {
-    .grid {
-      gap: 10rem;
-    }
-    figure::after {
-      content: "";
-      width: 50%;
-      height: 100%;
-      left: 0;
-      top: 10%;
-      /* bottom: 10%; */
-      background-color: rgba(81, 56, 238, 0.4);
-    }
-  }
+  
 `;
 
 
