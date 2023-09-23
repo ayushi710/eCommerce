@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { useProductContext } from "../../context/ProductContext";
 import { FormatPrice } from "../../utils/FormatPrice";
 import PageNavigation from "../PageNavigation";
+import MyImage from "../MyImage";
 
 
 
@@ -37,8 +38,7 @@ const SingleProduct = () => {
     <div className="grid grid-two-column">
       {/* product Images  */}
       <div className="product_images">
-        {/* <MyImage imgs={image} /> */}
-        {/* <img src={image}/> */}
+        <MyImage imgs={image} />
       </div>
 
       {/* product dAta  */}
